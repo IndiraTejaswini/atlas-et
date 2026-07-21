@@ -25,8 +25,10 @@ describe("ErrorBoundary", () => {
         <Bomb />
       </ErrorBoundary>
     );
-    expect(screen.getByText("This page hit an error")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /reload page/i })).toBeInTheDocument();
+    expect(screen.getByText("System Interruption")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Reload View/i })).toBeInTheDocument();
+    // expect(screen.getByText("This page hit an error")).toBeInTheDocument();
+    // expect(screen.getByRole("button", { name: /reload page/i })).toBeInTheDocument();
     spy.mockRestore();
   });
 
@@ -37,7 +39,8 @@ describe("ErrorBoundary", () => {
         <Bomb />
       </ErrorBoundary>
     );
-    expect(screen.getByText(/boom from a broken page/)).toBeInTheDocument();
+    expect(screen.getByText(/The telemetry for this view was interrupted/i)).toBeInTheDocument();
+    // expect(screen.getByText(/boom from a broken page/)).toBeInTheDocument();
     spy.mockRestore();
   });
 });
