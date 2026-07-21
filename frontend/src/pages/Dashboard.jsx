@@ -199,7 +199,7 @@ function EvalCard() {
       <p className="text-xs mb-8 text-[var(--ink-3)] h-4">
         {split === "tuning"
           ? "Benchmarked on gold set used during build phase"
-          : `Benchmarked on ${ev?.validation.held_out_questions ?? "a"} new questions`}
+          : `Benchmarked on ${ev?.validation.held_out_questions ?? "a"} held-out, not independently authored questions`}
       </p>
       
       {!ev ? <Skeleton className="h-[200px]" /> : (
