@@ -1,0 +1,4 @@
+# Test-only dependencies — not needed to run the API, only to run the test suite.
+-r requirements.txt
+pytest>=8.0
+httpx>=0.27

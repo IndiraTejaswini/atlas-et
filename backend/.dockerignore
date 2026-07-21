@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+tests/
+data/index_cache/
+data/alerts_ack.json
+.pytest_cache/

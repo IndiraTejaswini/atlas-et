@@ -1,0 +1,40 @@
+# Core API
+fastapi>=0.110
+uvicorn[standard]>=0.29
+python-multipart>=0.0.9
+
+# Multi-format ingestion
+pypdf>=4.2
+openpyxl>=3.1
+
+# Semantic (LSA) retrieval signal + scale benchmark
+numpy>=1.26
+
+# ANN index serving the LSA embeddings (FAISS HNSW) + disk-persisted warm
+# start (app/embeddings.py). Falls back to exact brute-force cosine search
+# if this somehow isn't importable — see embeddings.py's _FAISS_AVAILABLE
+# guard — but is a real, required dependency, not an optional extra.
+faiss-cpu>=1.8
+
+# P&ID / drawing computer vision (vision.py, sample_pid.py) — required, not
+# optional: the Drawings page calls these unconditionally. headless build
+# avoids pulling GUI/Qt libs on a server.
+opencv-python-headless>=4.9
+Pillow>=10.3
+
+# OCR for scanned forms / image-only PDFs (optional but recommended — degrades
+# cleanly to "OCR engine not installed" without it, see app/ocr.py)
+rapidocr-onnxruntime>=1.3
+
+# Optional — LLM-synthesized copilot answers + the Planning Agent. Pluggable
+# provider, auto-detected from the key prefix (see app/llm.py). Retrieval and
+# citations are unchanged without it; the app degrades cleanly to extractive.
+#
+# Recommended free path: a Groq key (gsk_..., free, no card, no extra install
+# — it's spoken over stdlib urllib). Get one at https://console.groq.com and
+# set GROQ_API_KEY. OpenRouter (sk-or-...) and OpenAI (sk-...) work the same way.
+#
+# Google Gemini (AIza... key) is also supported but needs this SDK, and its
+# free tier is region-restricted (may return quota:0):
+#   pip install google-genai
+# google-genai>=1.0

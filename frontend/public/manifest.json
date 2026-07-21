@@ -1,0 +1,14 @@
+{
+  "name": "ATLAS — Industrial Knowledge Intelligence",
+  "short_name": "ATLAS",
+  "description": "One queryable brain over every drawing, work order, procedure, inspection and incident in the plant.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f7f8fa",
+  "theme_color": "#2a78d6",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}
