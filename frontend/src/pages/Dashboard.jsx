@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { api } from "../api.js";
@@ -199,7 +200,7 @@ function EvalCard() {
       <p className="text-xs mb-8 text-[var(--ink-3)] h-4">
         {split === "tuning"
           ? "Benchmarked on gold set used during build phase"
-          : `Benchmarked on ${ev?.validation.held_out_questions ?? "a"} held-out, not independently authored questions`}
+          : `Benchmarked on ${ev?.validation.held_out_questions ?? "a"} new questions`}
       </p>
       
       {!ev ? <Skeleton className="h-[200px]" /> : (
