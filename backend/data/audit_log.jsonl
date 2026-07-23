@@ -1,3 +1,11 @@
 {"ts": "2026-07-20T22:12:32", "actor": "anonymous", "role": "operator", "action": "ingest", "detail": "TEST-LIVE-INGEST (markdown, test-live-ingest.md)"}
 {"ts": "2026-07-21T09:33:00", "actor": "anonymous", "role": "operator", "action": "alert.ack", "detail": "alert-856617a63c"}
 {"ts": "2026-07-21T09:36:58", "actor": "anonymous", "role": "operator", "action": "ingest", "detail": "ENERGY_SECURITY_FRAMEWORK (pdf, Energy_Security_Framework.pdf)"}
+{"ts": "2026-07-22T22:38:18", "actor": "anonymous", "role": "operator", "action": "alert.ack", "detail": "alert-4c6aea36ff"}
+{"ts": "2026-07-22T22:38:22", "actor": "anonymous", "role": "operator", "action": "alert.ack", "detail": "alert-47b813572e"}
+{"ts": "2026-07-22T22:38:32", "actor": "anonymous", "role": "operator", "action": "alert.ack", "detail": "alert-77861f754b"}
+{"ts": "2026-07-22T22:38:35", "actor": "anonymous", "role": "operator", "action": "alert.ack", "detail": "alert-342ceb3e5f"}
+{"ts": "2026-07-22T22:38:36", "actor": "anonymous", "role": "operator", "action": "alert.ack", "detail": "alert-dc22313677"}
+{"ts": "2026-07-22T22:38:40", "actor": "anonymous", "role": "operator", "action": "alert.ack", "detail": "alert-6b11f35e98"}
+{"ts": "2026-07-22T23:59:23", "actor": "anonymous", "role": "operator", "action": "ingest", "detail": "WORKPLACE_A (pdf, Workplace_A.pdf)"}
+{"ts": "2026-07-23T00:42:42", "actor": "anonymous", "role": "operator", "action": "ingest", "detail": "STANDARD-SUPPLIER-INSPECTIONSHEALTHSAFETYENVIRONMENT (pdf, Standard-Supplier-InspectionsHealthSafetyEnvironment.pdf)"}
