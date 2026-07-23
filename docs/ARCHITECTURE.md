@@ -294,10 +294,9 @@ The **module boundaries don't change** — only the storage implementations behi
 
 ## 12. Key trade-offs
 
-1. **~~Full rebuild on ingest vs. incremental indexing.~~ Done — see §12b.** This used to read "a full rebuild is simpler and we chose correctness-by-construction now, performance-later" as the honest trade-off. It's since been built, precisely because "later" is exactly when a full rebuild stops being <50 ms — waiting for that moment to arrive before starting the work would have meant shipping the bottleneck the whole time it mattered.
-2. **Rule-based extraction vs. learned NER.** We trade broad generalization for perfect precision on the tag conventions that actually matter, plus zero inference cost and full auditability. New patterns are one regex away.
-3. **In-memory vs. database.** We trade durability infrastructure for sub-millisecond queries and trivial deployment. The corpus files *are* the database; everything derived is reconstructable.
-4. **Explainable hybrid retrieval vs. pure vector RAG.** We trade some recall on paraphrase-heavy queries for total transparency — every surfaced document can be justified by a lexical hit or a named graph path. For a safety-critical buyer, "show me why you said that" outweighs a marginal recall gain.
+1. **Rule-based extraction vs. learned NER.** We trade broad generalization for perfect precision on the tag conventions that actually matter, plus zero inference cost and full auditability. New patterns are one regex away.
+2. **In-memory vs. database.** We trade durability infrastructure for sub-millisecond queries and trivial deployment. The corpus files *are* the database; everything derived is reconstructable.
+3. **Explainable hybrid retrieval vs. pure vector RAG.** We trade some recall on paraphrase-heavy queries for total transparency — every surfaced document can be justified by a lexical hit or a named graph path. For a safety-critical buyer, "show me why you said that" outweighs a marginal recall gain.
 
 ---
 
@@ -347,5 +346,4 @@ Named plainly rather than left implicit, in the same spirit as §12's trade-offs
 **Still open** — a real deployment beyond a trusted network needs, in roughly this order:
 1. Real per-user identity — partially addressed by the named-key audit trail above: good enough to answer "which named key did this," not yet a real account/SSO system with its own per-user credentials.
 2. TLS termination (this API assumes a reverse proxy handles it; it does not terminate TLS itself).
-3. ~~Upload persistence to disk~~ — done: `ingest.save_document_to_corpus()` (§11).
-4. Prompt-injection **elimination** — mitigated, not eliminated (see above). Delimiters and instructions raise the bar; they do not guarantee a sufficiently adversarial excerpt can't still influence output. The more robust fix — treating retrieved content as strictly non-authoritative at the API level (a provider's structured tool-result channel — OpenAI-style `role:"tool"` messages, or an Anthropic `tool_result` block — already does this better than free-text concatenation, which is part of why the agent path is somewhat safer than the plain synthesis path today) — is still a deeper change than a prompt edit, and not fully done.
+3. Prompt-injection **elimination** — mitigated, not eliminated (see above). Delimiters and instructions raise the bar; they do not guarantee a sufficiently adversarial excerpt can't still influence output. The more robust fix — treating retrieved content as strictly non-authoritative at the API level (a provider's structured tool-result channel — OpenAI-style `role:"tool"` messages, or an Anthropic `tool_result` block — already does this better than free-text concatenation, which is part of why the agent path is somewhat safer than the plain synthesis path today) — is still a deeper change than a prompt edit, and not fully done.
