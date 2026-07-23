@@ -44,8 +44,6 @@ The seed corpus hides a real causal chain across **six document types**: a 2024 
           (18 seed docs, 10 types)   (V=57, E=186)         (disk-cached warm start)
 ```
 
-Full design rationale, data structures, algorithms, complexity and latency budgets: **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)**.
-
 ---
 
 ## Quick start
@@ -121,15 +119,12 @@ Both run in CI on every push/PR (`.github/workflows/ci.yml`). `Alerts.test.jsx` 
 ### 3. Optional — LLM-synthesized answers (pluggable provider; free via Groq)
 The Copilot works fully offline in **extractive mode**. To upgrade answer synthesis to an LLM while keeping identical retrieval + citation grounding, set one API key. The provider is auto-detected from the key prefix and sits behind a small adapter (`app/llm.py`) — swapping providers is configuration, not a code change.
 
-**Recommended (free, no card, no extra install):** a **Groq** key — get one at https://console.groq.com (starts with `gsk_`). Groq is OpenAI-compatible and spoken over stdlib `urllib`, so nothing extra to install:
 ```bash
 export GROQ_API_KEY=gsk_...     # PowerShell: $env:GROQ_API_KEY="gsk_..."
 # (optional) pick a model — defaults to llama-3.3-70b-versatile:
 #   export LLM_MODEL=llama-3.1-8b-instant
 # restart the backend
 ```
-
-**Also supported**, auto-detected by key prefix: **OpenRouter** (`sk-or-...`), **OpenAI** (`sk-...`), and **Google Gemini** (`AIza...`, requires `pip install google-genai`). Any of these can also be placed in a single `GEMINI_API_KEY` / `LLM_API_KEY` slot — the prefix decides the provider. Note Gemini's *free tier* is region-restricted and may return `quota: 0`; Groq is the reliable free path.
 
 The Copilot header flips to "AI synthesis on" automatically. **Retrieval and citations are identical in both modes** — only the prose composition changes, so the demo is honest either way.
 
@@ -209,8 +204,6 @@ atlas/
 ├── .github/workflows/ci.yml # backend pytest suite + frontend build, on every push/PR
 └── docs/
     ├── ARCHITECTURE.md      # system-design deep dive
-    ├── DEMO.md              # 4-minute demo script + video shot list
-    └── PITCH.md             # presentation deck outline
 ```
 
 ## Design choices worth calling out
